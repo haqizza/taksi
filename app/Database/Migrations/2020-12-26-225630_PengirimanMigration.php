@@ -68,7 +68,7 @@ class PengirimanMigration extends Migration
 				'type'           => 'DATETIME',
 			],
 			'updated_at'   					=> [
-				'type'           => 'DATETIME', 
+				'type'           => 'DATETIME',
 			],
 		]);
         $this->forge->addKey('id_pengiriman', true);

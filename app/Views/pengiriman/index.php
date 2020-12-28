@@ -37,7 +37,7 @@
         .flex-horizon{
             width: 100%;
             display: flex;
-            flex-flow: row wrap;
+            flex-flow: rows wrap;
             align-item:start;
             justify-content: start;
             padding: 0;
@@ -64,72 +64,117 @@
         </div>
     </div>
     <div id="container" class="card">
-        
-        <a href="<?=base_url();?>/mahasiswa">
-            <div class="btn btn-info text-left">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-        </a>
         <div class="card-header text-center">
             <h5>Kirim Barang</h5>
         </div>
         <div class="card-body">
             <?= \Config\Services::Validation()->listErrors(); ?>
-            <form action="<?= base_url('mahasiswa/save'); ?>" method="POST">
+            <form action="<?= base_url('pengiriman/save'); ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field() ?>
-                <table class="table table-bordered">
-                    <tr>
-                        <td width="25%">NIM</td>
-                        <td id="userUid">
-                            <input type="text" class="form-control input" name="nim" id="inputUid">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nama</td>
-                        <td id="userName">
-                        <input type="text" class="form-control input" name="name" id="inputName">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Jenis Kelamin</td>
-                        <td id="userGender">
-                        <select name="gender" class="form-control" id="inputGender">
-                            <option value="pria">Pria</option>
-                            <option value="wanita">Wanita</option>
-                        </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Lahir</td>
-                        <td id="userBirth">
-                        <input type="text" class="form-control input" name="birth" id="inputBirth">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Alamat</td>
-                        <td id="userAddress">
-                        <input type="text" class="form-control input" name="address" id="inputAddress">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Phone</td>
-                        <td id="userPhone">
-                        <input type="text" class="form-control input" name="phone" id="inputPhone" >
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td id="userEmail">
-                        <input type="text" class="form-control input" name="email" id="inputEmail">
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td colspan="2" class="input">
-                        <input type="submit" class="btn btn-success" value="Simpan">
-                        </td>
-                    </tr>
-                </table>
+                <fieldset>
+                    <legend>Data Pengirim</legend>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control input" name="nama_pengirim" placeholder="Nama Pengirim">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea type="text" rows="3" class="form-control input" name="alamat_pengirim" placeholder="Alamat Pengirim"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control input" name="telp_pengirim" placeholder="Nomor Telepon Pengirim">
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Data Penerima</legend>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control input" name="nama_penerima" placeholder="Nama Penerima">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea type="text" rows="3" class="form-control input" name="alamat_penerima" placeholder="Alamat Penerima"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control input" name="telp_penerima" placeholder="Nomor Telepon Penerima">
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Data Barang</legend>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control input" name="nama_barang" placeholder="Nama Barang">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="ukuran_barang" class="form-control input">
+                                    <option hidden>Ukuran Barang</option>
+                                    <option value="Sedang">Sedang</option>
+                                    <option value="Besar">Besar</option>
+                                    <option value="Kecil">Kecil</option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-file">
+                                    <input type="file" name="foto" class="custom-file-input">
+                                    <label class="custom-file-label">Foto Barang</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea type="text" rows="3" class="form-control input" name="keterangan" placeholder="Keterangan"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Pengiriman</legend>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>
+                                <select name="pengiriman" class="form-control input">
+                                    <option hidden>Pilih Jenis Pengiriman</option>
+                                    <option value="Reguler">Reguler</option>
+                                    <option value="Express">Express</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="cara_pembayaran" class="form-control input">
+                                    <option hidden>Pilih Cara Pembayaran</option>
+                                    <option value="Tunai">Tunai</option>
+                                    <option value="OVO">OVO</option>
+                                    <option value="Dana">Dana</option>
+                                    <option value="BNI">Transfer BNI</option>
+                                    <option value="BRI">Transfer BRI</option>
+                                    <option value="BCA">Transfer BCA</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-success px-4" value="Kirim">
+                </div>
             </form>
         </div>
     </div>

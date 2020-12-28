@@ -3,7 +3,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Pembayaran extends Model{
+class PembayaranModel extends Model{
   protected $table          = 'pembayaran';
   protected $useTimestamps  = true;  
   protected $allowedFields = [

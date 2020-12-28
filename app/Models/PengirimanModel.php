@@ -16,6 +16,10 @@ class PengirimanModel extends Model{
     'telp_penerima',
     'nama_barang',
     'ukuran_barang',
+    'foto',
+    'keterangan',
+    'pengiriman',
+    'cara_pembayaran',
     'status_pengiriman',
   ];
 
