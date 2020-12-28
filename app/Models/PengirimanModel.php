@@ -3,7 +3,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Pengiriman extends Model{
+class PengirimanModel extends Model{
   protected $table      = 'pengiriman';
   protected $useTimestamps  = true;
   protected $allowedFields = [

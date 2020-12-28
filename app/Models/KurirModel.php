@@ -3,7 +3,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Kurir extends Model{
+class KurirModel extends Model{
   protected $table          = 'kurir';
   protected $useTimestamps  = true;  
   protected $allowedFields = [	

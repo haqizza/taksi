@@ -2,13 +2,15 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-use App\Models\User;
+use App\Models\UserModel;
 
 class Auth extends Controller{
     protected $userModel;
+    protected $session;
     
     public function __construct(){
-        $this->userModel = new User();
+        $this->userModel = new UserModel();
+        $this->session = session();
     }
 
     public function index(){
@@ -16,7 +18,7 @@ class Auth extends Controller{
     }
 
     public function auth(){
-        $session = session();
+        
         $login = $session->get('isLogin');
         $role = $session->get('role');
         
