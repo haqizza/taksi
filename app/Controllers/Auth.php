@@ -9,8 +9,8 @@ class Auth extends Controller{
     protected $session;
     
     public function __construct(){
-        $this->userModel = new UserModel();
         $this->session = session();
+        $this->userModel = new UserModel();
     }
 
     public function index(){
@@ -19,8 +19,8 @@ class Auth extends Controller{
 
     public function auth(){
         
-        $login = $session->get('isLogin');
-        $role = $session->get('role');
+        $login = $this->session->get('isLogin');
+        $role = $this->session->get('role');
         
         if($this->request->getmethod() === 'post' && $this->validate([
             'username' => 'required',
@@ -35,17 +35,18 @@ class Auth extends Controller{
             
             if($data != NULL){
                 $userData = [
+                    'id'        => $data['kurir'],
                     'username'  => $data['username'],
                     'role'      => $data['password'],
                     'logged_in' => TRUE
                 ];
-                $session->set($userData);
-                
-                if($session['role'] == 'admin'){
+                $this->session->set($userData);
+                // echo $this->session->get('id');
+                if($this->session->role == 'admin'){
                     return redirect()->to('/admin');
                 }
-                else if($session['role'] == 'kurir'){
-                    return redirect()->to('/dashboard');
+                else if($this->session->role == 'kurir'){
+                    return redirect()->to('/kurir');
                 }
             }else{
                 return redirect()->to('/');
@@ -55,5 +56,11 @@ class Auth extends Controller{
         {
             return redirect()->to(base_url('/login'));
         }
+    }
+
+    public function logout(){
+        $this->session->destroy();
+
+        return redirect()->to('/');
     }
 }

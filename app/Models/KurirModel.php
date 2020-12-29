@@ -23,6 +23,6 @@ class KurirModel extends Model{
 
   public function getById($id)
   {
-    return $this->where(['id' => $id])->first();
+    return $this->where(['id_kurir' => $id])->first();
   }
 }

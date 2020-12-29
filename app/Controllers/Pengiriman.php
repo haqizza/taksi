@@ -8,8 +8,10 @@ use App\Models\PengirimanModel;
 
 class Pengiriman extends Controller{
     protected $pengirimanModel;
+    protected $session;
 
     public function __construct(){
+        $this->session = session();
         $this->pengirimanModel = new PengirimanModel();
     }
 
@@ -79,4 +81,6 @@ class Pengiriman extends Controller{
 
         return view('resi/index', $data);
     }
+
+    
 }

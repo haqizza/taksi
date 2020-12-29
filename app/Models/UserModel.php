@@ -16,7 +16,7 @@ class UserModel extends Model{
   public function getAll()
   {
     return $this->db->table('user')
-      ->join('kurir','user.kurir = kurir.id')
+      ->join('kurir','user.kurir = kurir.id_kurir')
       ->get()->getResultArray();
   }
 

@@ -30,16 +30,37 @@ class PengirimanModel extends Model{
 
     public function getOpenedPengiriman()
     {
-        return $this->where(['status_pengiriman' => 'menunggu penjemputan']);
+        return $this->where('kurir is NULL')->findAll();
     }
 
     public function getPengirimanKurir($idKurir)
     {
-        return $this->where(['kurir' => $idKurir]);
+        return $this->where('kurir', $idKurir)->findAll();
     }
     
     public function getByKode($kode)
     {
         return $this->where(['kode_pengiriman' => $kode])->first();
+    }
+
+    public function updateKurir($idPengiriman, $idKurir)
+    {   
+        $db = \Config\Database::connect();
+        $builder = $db->table('pengiriman');
+        $data = [
+            'kurir' => $idKurir,
+        ];
+        $builder->where('id_pengiriman', $idPengiriman);
+        $builder->update($data);
+    }
+
+    public function changeState($idPengiriman, $state){
+        $data = [
+            'status_pengiriman' => $state,
+        ];
+        $db = \Config\Database::connect();
+        $builder = $db->table('pengiriman');
+        $builder->where('id_pengiriman', $idPengiriman);
+        $builder->update($data);
     }
 }
