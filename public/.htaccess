@@ -1,6 +1,8 @@
 # Disable directory browsing
 Options All -Indexes
-
+Options All
+AllowOverride All
+Require all granted
 # ----------------------------------------------------------------------
 # Rewrite engine
 # ----------------------------------------------------------------------

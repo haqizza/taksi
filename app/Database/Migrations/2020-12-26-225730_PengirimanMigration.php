@@ -47,8 +47,7 @@ class PengirimanMigration extends Migration
 				'constraint'     => 10,
 			],
 			'foto'        			        => [
-				'type'           => 'VARCHAR',
-				'constraint'     => 15,
+				'type'           => 'TEXT',
 			],
 			'keterangan'        			=> [
                 'type'           => 'TEXT',
@@ -62,8 +61,13 @@ class PengirimanMigration extends Migration
 				'constraint'     => 10,
 			],
 			'status_pengiriman'    			=> [
-				'type'           => 'ENUM("menunggu penjemputan","sedang dijemput","dalam pengiriman","selesai dikirim")',
+                'type'           => 'ENUM("menunggu penjemputan","sedang dijemput","dalam pengiriman","selesai dikirim")',
 			],
+            'kurir'        		            => [
+                'type'           => 'INT',
+                'constraint'     => 10,
+                'null'           => true,
+            ],
 			'created_at'   					=> [
 				'type'           => 'DATETIME',
 			],
@@ -73,6 +77,7 @@ class PengirimanMigration extends Migration
 		]);
         $this->forge->addKey('id_pengiriman', true);
         $this->forge->addForeignKey('cara_pembayaran','pembayaran','id_pembayaran','CASCADE','CASCADE');
+        $this->forge->addForeignKey('kurir','kurir','id_kurir','CASCADE','CASCADE');
 		$this->forge->createTable('pengiriman');
 	}
 

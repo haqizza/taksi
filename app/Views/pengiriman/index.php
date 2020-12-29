@@ -64,6 +64,7 @@
         </div>
     </div>
     <div id="container" class="card">
+        <img src="<?php echo base_url('image/WhatsApp Image 2020-12-27 at 13.48.28_2.jpeg')?>" alt="">
         <div class="card-header text-center">
             <h5>Kirim Barang</h5>
         </div>
@@ -123,9 +124,9 @@
                             <td>
                                 <select name="ukuran_barang" class="form-control input">
                                     <option hidden>Ukuran Barang</option>
-                                    <option value="Sedang">Sedang</option>
-                                    <option value="Besar">Besar</option>
-                                    <option value="Kecil">Kecil</option>
+                                    <option value="1">Kecil</option>
+                                    <option value="2">Sedang</option>
+                                    <option value="3">Besar</option>
                                 </select>
                             </td>
                         </tr>
@@ -161,12 +162,12 @@
                             <td>
                                 <select name="cara_pembayaran" class="form-control input">
                                     <option hidden>Pilih Cara Pembayaran</option>
-                                    <option value="Tunai">Tunai</option>
-                                    <option value="OVO">OVO</option>
-                                    <option value="Dana">Dana</option>
-                                    <option value="BNI">Transfer BNI</option>
-                                    <option value="BRI">Transfer BRI</option>
-                                    <option value="BCA">Transfer BCA</option>
+                                    <option value="1">Tunai</option>
+                                    <option value="2">OVO</option>
+                                    <option value="3">Dana</option>
+                                    <option value="4">Transfer BNI</option>
+                                    <option value="5">Transfer BRI</option>
+                                    <option value="6">Transfer BCA</option>
                                 </select>
                             </td>
                         </tr>

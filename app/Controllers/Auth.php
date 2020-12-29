@@ -40,8 +40,13 @@ class Auth extends Controller{
                     'logged_in' => TRUE
                 ];
                 $session->set($userData);
-
-                return redirect()->to('/dashboard');
+                
+                if($session['role'] == 'admin'){
+                    return redirect()->to('/admin');
+                }
+                else if($session['role'] == 'kurir'){
+                    return redirect()->to('/dashboard');
+                }
             }else{
                 return redirect()->to('/');
             }
