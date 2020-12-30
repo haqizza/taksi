@@ -1,0 +1,10 @@
+#des_about{
+    font-size: 20pt;
+}
+
+hr.g1{
+    border: 5px solid rgb(126, 106, 163);
+    border-radius: 15px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
