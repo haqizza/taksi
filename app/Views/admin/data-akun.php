@@ -78,7 +78,7 @@
                 <a href="<?=base_url('/admin/data_kurir');?>">
                 <div class="menu-item"><i class="fa fa-book"></i> Kurir</div>
                 </a>
-                <a href="<?=base_url('/admin/data_akun');?>">
+                <a href="<?=base_url('/admin/pengiriman_saya');?>">
                     <div class="menu-item" ><i class="fa fa-user"></i> Akun</div>
                 </a>
                 <a href="<?=base_url('/login');?>">
@@ -90,55 +90,24 @@
             <div id="content" class="">
                 <div id="Account" class="card">
                     <div class="card-header text-center">
-                        <h5>Pengiriman</h5>
+                        <h5>Data Kurir</h5>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">
-                            <tr class="table-active">
+                            <tr class="table-active"></tr>
                             <th hidden>id</th>
-                            <th>Pengirim</th>
-                            <th>Penerima</th>
-                            <th>Barang</th>
-                            <th width="30%">Foto</th>
-                            <th>Edit</th>
-                            </tr>
-                        <?php foreach ($pengiriman as $data) : ?>
+                            <th width="20%">Username</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                        <?php foreach ($dataAkun as $data) : ?>
                             <tr>
-                                <td class='pengirim'><?=
-                                    "Nama : " . $data["nama_pengirim"] . "<br>" .
-                                    "Telepon : " . $data["telp_pengirim"] . "<br>" .
-                                    "Alamat :" . $data["alamat_pengirim"]; 
-                                ?></td>
-                                <td class='penerima'><?=
-                                    "Nama : " . $data["nama_penerima"] . "<br>" .
-                                    "Telepon : " . $data["telp_penerima"] . "<br>" .
-                                    "Alamat :" . $data["alamat_penerima"]; 
-                                ?></td>
-                                <td class='barang'><?php
-                                    $ukuran;
-                                    $n = $data['ukuran_barang']; 
-                                    
-                                    if($n == 1){$ukuran = "Kecil";}
-                                    else if($n == 2){$ukuran = "Sedang";}
-                                    else if($n == 3){$ukuran = "Besar";}
-
-                                    echo
-                                    "Barang : " . $data["nama_barang"] . "<br>" .
-                                    "Ukuran : " . $ukuran . "<br>" .
-                                    "Keterangan :" . $data["keterangan"]; 
-                                ?></td>
-                                <td>
-                                    <div class="btn btn-secondary" onclick="openFoto(this);">Foto</div>
-                                    <img class='foto' src="<?= base_url("/image/".$data["foto"]);?>" alt="Foto Barang" width="100%" hidden>
-                                </td>
-                                <td>
-                                    <a href="<?=base_url('kurir/take/'.$data['id_pengiriman']);?>">
-                                        <button class="btn btn-success">Ambil</button>
-                                    </a>
-                                </td>
+                                <td class="nama"><?=$data['username'];?></td>
+                                <td><?= ucfirst($data['password']);?></td>
+                                <td><?=$data['role'];?></td>
                             </tr>
                         <?php endforeach ?>
                         </table>
+                        <!-- <small><sup>*</sup>Untuk pergantian data bisa menghubungi bagian Administrasi atau bisa langsung datang ke kantor.</small> -->
                     </div>
                 </div>
             </div>
@@ -146,19 +115,6 @@
     </div>
 </body>
 </html>
-<script>
-    function openFoto(value){
-        value = $(value).siblings('.foto');
-        hid = $(value).attr('hidden');
-        console.log(hid);
-        if(hid == "hidden"){
-            $(value).removeAttr('hidden');
-        }
-        else{
-            $(value).attr('hidden', '');
-        }
-    }
-</script>
 <script src="https://kit.fontawesome.com/c89fc36b61.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
