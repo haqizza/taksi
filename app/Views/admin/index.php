@@ -5,8 +5,8 @@
 	<title>TAKSI</title>
 	<meta name="description" content="Kotak Aksi Covid-19 | Jasa Pengiriman Tanpa Kontak">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 	<style {csp-style-nonce}>
 		*{
@@ -66,17 +66,17 @@
 	</style>
 </head>
 <body>
-    <div id="topbar" class="flex-horizon bg-info">
+    <div id="topbar" class="flex-horizon bg-primary">
       <div class="topbar-item text-white"><b>Dashboard Admin</b></div>
     </div>
     <div class="flex-horizon stretch">
-        <div id="sideMenu" class="bg-info">
+        <div id="sideMenu" class="bg-primary">
             <div id="menuList">
                 <a href="<?=base_url('/admin');?>">
-                <div class="menu-item"><i class="fa fa-chart-pie"></i> Pengiriman</div>
+                <div class="menu-item"><i class="fa fa-dolly-flatbed"></i> Pengiriman</div>
                 </a>
                 <a href="<?=base_url('/admin/data_kurir');?>">
-                <div class="menu-item"><i class="fa fa-book"></i> Kurir</div>
+                <div class="menu-item"><i class="fas fa-motorcycle"></i> Kurir</div>
                 </a>
                 <a href="<?=base_url('/admin/data_akun');?>">
                     <div class="menu-item" ><i class="fa fa-user"></i> Akun</div>
@@ -95,25 +95,29 @@
                     <div class="card-body">
                         <table class="table table-bordered">
                             <tr class="table-active">
-                            <th hidden>id</th>
-                            <th>Pengirim</th>
-                            <th>Penerima</th>
-                            <th>Barang</th>
-                            <th width="30%">Foto</th>
-                            <th>Edit</th>
+                                <th width="30%">Data</th>
+                                <th>Pengirim</th>
+                                <th>Penerima</th>
+                                <th>Barang</th>
+                                <th>Aksi</th>
                             </tr>
                         <?php foreach ($pengiriman as $data) : ?>
                             <tr>
-                                <td class='pengirim'><?=
-                                    "Nama : " . $data["nama_pengirim"] . "<br>" .
-                                    "Telepon : " . $data["telp_pengirim"] . "<br>" .
-                                    "Alamat :" . $data["alamat_pengirim"]; 
-                                ?></td>
-                                <td class='penerima'><?=
-                                    "Nama : " . $data["nama_penerima"] . "<br>" .
-                                    "Telepon : " . $data["telp_penerima"] . "<br>" .
-                                    "Alamat :" . $data["alamat_penerima"]; 
-                                ?></td>
+                                <td>
+                                    Kode : <b><?= $data["kode_pengiriman"];?></b>
+                                    <br>
+                                    <div class="btn btn-secondary" onclick="openFoto(this);">Foto</div>
+                                    <img class='foto' src="<?= base_url("/image/".$data["foto"]);?>" alt="Foto Barang" width="100%" hidden>
+                                </td>
+                                <td class='pengirim'>
+                                    Nama :  <?=$data["nama_pengirim"];?> <br>
+                                    Telepon : <?=$data["telp_pengirim"];?> <br>
+                                    Alamat : <?=$data["alamat_pengirim"];?></td>
+                                <td class='penerima'>
+                                    Nama :  <?=$data["nama_penerima"];?> <br>
+                                    Telepon : <?=$data["telp_penerima"];?> <br>
+                                    Alamat : <?=$data["alamat_penerima"];?></td>
+                                </td>
                                 <td class='barang'><?php
                                     $ukuran;
                                     $n = $data['ukuran_barang']; 
@@ -128,12 +132,8 @@
                                     "Keterangan :" . $data["keterangan"]; 
                                 ?></td>
                                 <td>
-                                    <div class="btn btn-secondary" onclick="openFoto(this);">Foto</div>
-                                    <img class='foto' src="<?= base_url("/image/".$data["foto"]);?>" alt="Foto Barang" width="100%" hidden>
-                                </td>
-                                <td>
-                                    <a href="<?=base_url('kurir/take/'.$data['id_pengiriman']);?>">
-                                        <button class="btn btn-success">Ambil</button>
+                                    <a href="<?=base_url('admin/pengiriman/'.$data['id_pengiriman']);?>">
+                                        <button class="btn btn-success"><i class="fa fa-edit"></i></button>
                                     </a>
                                 </td>
                             </tr>

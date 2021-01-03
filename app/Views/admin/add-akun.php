@@ -45,30 +45,51 @@
 	</style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-primary py-3" id="mainNav">
-        <div class="container">
-            <a class="text-white navbar-brand js-scroll-trigger" href="<?=base_url('/');?>"><i>TAKSI</i></a>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <li><a class="btn btn-primary" href="<?=base_url('/pengiriman');?>"><i>Kirim Barang</i></a></li>
-                    <li><a class="btn btn-primary" href="<?=base_url('/cek');?>"><i>Cek Resi</i></a></li>
-                    <li><a class="btn btn-primary" href="<?=base_url('#tentang');?>"><i>Tentang</i>
-                    <li><a class="btn btn-primary" href="<?=base_url('#kontak');?>"><i>Kontak</i></a></li>
-                    <li><a class="btn btn-primary" href="<?=base_url('/login');?>"><i>Login</i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav> 
     <div id="container" class="card">
-        <div class="card-header text-center">
-            <h5>Kode Pengiriman</h5>
-        </div>
-        <div class="card-body text-center">
-            <div>
-                <a href="<?=base_url('/resi/'.$kode);?>">
-                    <h2><?=$kode?></h2>
-                </a>
+        <div class="card-header text-right">    
+            <a href="<?=base_url('/admin')?>">
+                <h5><i class="fa fa-times text-dark"></i></h5>
+            </a>
+            <div class="text-center">
+                <h5>Tambah Kurir</h5>
             </div>
+        </div>
+        <div class="card-body">
+            <form action="<?=base_url('admin/save_akun');?>" method="post">
+            <?= csrf_field() ?>
+            <table class="table table-borderless">
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" class="form-control input" name="username" value=""></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="text" class="form-control input" name="password" value=""></td>
+                </tr>
+                <tr>
+                    <td>Kurir</td>
+                    <td>
+                        <select name="kurir" class="form-control input">
+                        <?php foreach ($kurir as $data) : ?>
+                            <option value="<?=$data['id_kurir'];?>"><?=$data['nama_kurir']?></option>
+                        <?php endforeach ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Role</td>
+                    <td>
+                        <select name="role" class="form-control input">
+                            <option value="admin">Admin</option>
+                            <option value="kurir">Kurir</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center"><input type="submit" class="btn btn-success" value="Simpan"></td>
+                </tr>
+            </table>
+            </form>
         </div>
     </div>
 </body>

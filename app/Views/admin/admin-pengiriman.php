@@ -70,16 +70,16 @@
       <div class="topbar-item text-white"><b>Dashboard Kurir</b></div>
     </div>
     <div class="flex-horizon stretch">
-        <div id="sideMenu" class="bg-primary">
+    <div id="sideMenu" class="bg-primary">
             <div id="menuList">
-                <a href="<?=base_url('/kurir');?>">
+                <a href="<?=base_url('/admin');?>">
                 <div class="menu-item"><i class="fa fa-dolly-flatbed"></i> Pengiriman</div>
                 </a>
-                <a href="<?=base_url('/kurir/pengiriman_saya');?>">
-                <div class="menu-item"><i class="fa fa-book"></i> Pengiriman Saya</div>
+                <a href="<?=base_url('/admin/data_kurir');?>">
+                <div class="menu-item"><i class="fas fa-motorcycle"></i> Kurir</div>
                 </a>
-                <a href="<?=base_url('/kurir/data_diri');?>">
-                    <div class="menu-item" ><i class="fa fa-user"></i> Data Diri</div>
+                <a href="<?=base_url('/admin/data_akun');?>">
+                    <div class="menu-item" ><i class="fa fa-user"></i> Akun</div>
                 </a>
                 <a href="<?=base_url('/login');?>">
                     <div class="menu-item" ><i class="fa fa-sign-out-alt"></i> Logout</div>
@@ -90,17 +90,17 @@
             <div id="content" class="">
                 <div id="Account" class="card">
                     <div class="card-header text-center">
-                        <h5>Pengiriman</h5>
+                        <h5>Pengiriman Saya</h5>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">
                             <tr class="table-active">
-                            <th hidden>id</th>
-                            <th>Pengirim</th>
-                            <th>Penerima</th>
-                            <th>Barang</th>
-                            <th width="30%">Foto</th>
-                            <th width="8%"></th>
+                                <th hidden>id</th>
+                                <th>Pengirim</th>
+                                <th>Penerima</th>
+                                <th>Barang</th>
+                                <th width="25%">Foto</th>
+                                <th width="15%">Status Pengiriman</th>
                             </tr>
                         <?php foreach ($pengiriman as $data) : ?>
                             <tr>
@@ -127,10 +127,18 @@
                                     <div class="btn btn-secondary" onclick="openFoto(this);">Foto</div>
                                     <img class='foto' src="<?= base_url("/image/".$data["foto"]);?>" alt="Foto Barang" width="100%" hidden>
                                 </td>
-                                <td>
-                                    <a href="<?=base_url('kurir/take/'.$data['id_pengiriman']);?>">
-                                        <button class="btn btn-success">Ambil</button>
-                                    </a>
+                                <td class="text-center">
+                                    <form action="<?=base_url('kurir/change_state/');?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <input type="text" name="id_pengiriman" value="<?=$data['id_pengiriman']?>" hidden>
+                                        <select name="status_pengiriman" class="form-control input">
+                                            <option value="menunggu penjemputan"<?php if($data['status_pengiriman'] == 'menunggu penjemputan'){echo 'selected';} ?>>Menunggu Penjemputan</option>
+                                            <option value="sedang dijemput"<?php if($data['status_pengiriman'] == 'sedang dijemput'){echo 'selected';} ?>>Sedang Dijemput</option>
+                                            <option value="dalam pengiriman"<?php if($data['status_pengiriman'] == 'dalam pengiriman'){echo 'selected';} ?>>Dalam Pengiriman</option>
+                                            <option value="selesai dikirim"<?php if($data['status_pengiriman'] == 'selesai dikirim'){echo 'selected';} ?>>Selesai Dikirim</option>
+                                        </select>
+                                        <input type="submit" class="btn btn-success" value="Simpan">
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach ?>

@@ -15,6 +15,9 @@ class Kurir extends Controller{
         $this->session = session();
         $this->kurirModel = new KurirModel();
         $this->pengirimanModel = new PengirimanModel();
+        if($this->session->get('role') != 'kurir'){
+            return redirect()->to('/');
+        }
     }
 
     public function index(){

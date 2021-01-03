@@ -66,19 +66,19 @@
 	</style>
 </head>
 <body>
-    <div id="topbar" class="flex-horizon bg-info">
+    <div id="topbar" class="flex-horizon bg-primary">
       <div class="topbar-item text-white"><b>Dashboard Admin</b></div>
     </div>
     <div class="flex-horizon stretch">
-        <div id="sideMenu" class="bg-info">
+        <div id="sideMenu" class="bg-primary">
             <div id="menuList">
                 <a href="<?=base_url('/admin');?>">
-                <div class="menu-item"><i class="fa fa-chart-pie"></i> Pengiriman</div>
+                <div class="menu-item"><i class="fa fa-dolly-flatbed"></i> Pengiriman</div>
                 </a>
                 <a href="<?=base_url('/admin/data_kurir');?>">
-                <div class="menu-item"><i class="fa fa-book"></i> Kurir</div>
+                <div class="menu-item"><i class="fas fa-motorcycle"></i> Kurir</div>
                 </a>
-                <a href="<?=base_url('/admin/pengiriman_saya');?>">
+                <a href="<?=base_url('/admin/data_akun');?>">
                     <div class="menu-item" ><i class="fa fa-user"></i> Akun</div>
                 </a>
                 <a href="<?=base_url('/login');?>">
@@ -93,15 +93,22 @@
                         <h5>Data Kurir</h5>
                     </div>
                     <div class="card-body">
+                        <div class="text-right">
+                            <a href="<?=base_url('/admin/add_kurir');?>">
+                                <div class="btn btn-success"><i class="fa fa-plus"></i> Tambah</div>
+                            </a>
+                        </div>
                         <table class="table table-bordered">
-                            <tr class="table-active"></tr>
-                            <th hidden>id</th>
-                            <th width="20%">Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Tanggal lahir</th>
-                            <th>Alamat</th>
-                            <th>Telepon</th>
-                            <th>Email</th>
+                            <tr class="table-active">
+                                <th hidden>id</th>
+                                <th>Nama</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Tanggal lahir</th>
+                                <th>Alamat</th>
+                                <th>Telepon</th>
+                                <th>Email</th>
+                                <th width="12%">Aksi</th>
+                            </tr>
                         <?php foreach ($dataKurir as $data) : ?>
                             <tr>
                                 <td class="nama"><?=$data['nama_kurir'];?></td>
@@ -110,6 +117,14 @@
                                 <td><?=$data['alamat_kurir'];?></td>
                                 <td><?=$data['telp_kurir'];?></td>
                                 <td><?=$data['email_kurir'];?></td>
+                                <td>
+                                    <a href="<?=base_url('admin/kurir/'.$data['id_kurir']);?>">
+                                        <button class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                    </a>
+                                    <a href="<?=base_url('admin/kurir/delete/'.$data['id_kurir']);?>">
+                                        <button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
+                                    </a>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                         </table>

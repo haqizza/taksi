@@ -66,14 +66,14 @@
 	</style>
 </head>
 <body>
-    <div id="topbar" class="flex-horizon bg-info">
+    <div id="topbar" class="flex-horizon bg-primary">
       <div class="topbar-item text-white"><b>Dashboard Kurir</b></div>
     </div>
     <div class="flex-horizon stretch">
-        <div id="sideMenu" class="bg-info">
+        <div id="sideMenu" class="bg-primary">
             <div id="menuList">
                 <a href="<?=base_url('/kurir');?>">
-                <div class="menu-item"><i class="fa fa-chart-pie"></i> Pengiriman</div>
+                <div class="menu-item"><i class="fa fa-dolly-flatbed"></i> Pengiriman</div>
                 </a>
                 <a href="<?=base_url('/kurir/pengiriman_saya');?>">
                 <div class="menu-item"><i class="fa fa-book"></i> Pengiriman Saya</div>
@@ -104,16 +104,12 @@
                             </tr>
                         <?php foreach ($pengiriman as $data) : ?>
                             <tr>
-                                <td class='pengirim'><?=
-                                    "Nama : " . $data["nama_pengirim"] . "<br>" .
-                                    "Telepon : " . $data["telp_pengirim"] . "<br>" .
-                                    "Alamat :" . $data["alamat_pengirim"]; 
-                                ?></td>
-                                <td class='penerima'><?=
-                                    "Nama : " . $data["nama_penerima"] . "<br>" .
-                                    "Telepon : " . $data["telp_penerima"] . "<br>" .
-                                    "Alamat :" . $data["alamat_penerima"]; 
-                                ?></td>
+                                <td class='pengirim'>Nama :  <?=$data["nama_pengirim"];?> <br>
+                                    Telepon : <?=$data["telp_pengirim"];?> <br>
+                                    Alamat : <?=$data["alamat_pengirim"];?></td>
+                                <td class='penerima'>Nama :  <?=$data["nama_penerima"];?> <br>
+                                    Telepon : <?=$data["telp_penerima"];?> <br>
+                                    Alamat : <?=$data["alamat_penerima"];?></td></td>
                                 <td class='barang'><?php
                                     $ukuran;
                                     $n = $data['ukuran_barang']; 

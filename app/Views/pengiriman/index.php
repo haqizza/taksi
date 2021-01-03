@@ -45,24 +45,20 @@
 	</style>
 </head>
 <body>
-    <div class="navbar bg-info">
-        <div class="flex-horizon">
-            <a href="/">
-                <div class="menu-item">Halaman Utama</div>
-            </a>
-            <a href="<?=base_url();?>/mahasiswa">
-                <div class="menu-item">Tentang</div>
-            </a>
-            <a href="<?=base_url();?>/dosen">
-                <div class="menu-item">Kontak</div>
-            </a>
+    <nav class="navbar navbar-expand-md navbar-light bg-primary py-3" id="mainNav">
+        <div class="container">
+            <a class="text-white navbar-brand js-scroll-trigger" href="<?=base_url('/');?>"><i>TAKSI</i></a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li><a class="btn btn-primary" href="<?=base_url('/pengiriman');?>"><i>Kirim Barang</i></a></li>
+                    <li><a class="btn btn-primary" href="<?=base_url('/cek');?>"><i>Cek Resi</i></a></li>
+                    <li><a class="btn btn-primary" href="<?=base_url('#tentang');?>"><i>Tentang</i>
+                    <li><a class="btn btn-primary" href="<?=base_url('#kontak');?>"><i>Kontak</i></a></li>
+                    <li><a class="btn btn-primary" href="<?=base_url('/login');?>"><i>Login</i></a></li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <a href="<?=base_url();?>/login">
-                <div class="menu-item">Login</div>
-            </a>
-        </div>
-    </div>
+    </nav>  
     <div id="container" class="card">
         <img src="<?php echo base_url('image/WhatsApp Image 2020-12-27 at 13.48.28_2.jpeg')?>" alt="">
         <div class="card-header text-center">

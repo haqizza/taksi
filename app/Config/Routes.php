@@ -38,12 +38,19 @@ $routes->post('/login/auth', 'Auth::auth');
 $routes->get('/logout', 'Auth::logout');
 
 $routes->get('/pengiriman', 'Pengiriman::index');
+$routes->get('/cek', 'Pengiriman::cek');
 $routes->get('/resi/(:segment)', 'Pengiriman::resi/$1');
 
 $routes->get('/kurir', 'Kurir::index');
 $routes->get('/kurir/take/(:segment)', 'Kurir::take/$1');
 
 $routes->get('/admin', 'Admin::index');
+// $routes->post('/save_kurir', 'Admin::save_kurir');
+$routes->get('/admin/pengiriman/(:segment)', 'Admin::edit_pengiriman/$1');
+$routes->get('/admin/kurir/(:segment)', 'Admin::edit_kurir/$1');
+$routes->get('/admin/kurir/delete/(:segment)', 'Admin::delete_kurir/$1');
+$routes->get('/admin/akun/(:segment)', 'Admin::edit_akun/$1');
+$routes->get('/admin/akun/delete/(:segment)', 'Admin::delete_akun/$1');
 
 $routes->match(['get', 'post'], 'image/(:segment)', 'Home::image/$1');
 

@@ -37,7 +37,7 @@ class Auth extends Controller{
                 $userData = [
                     'id'        => $data['kurir'],
                     'username'  => $data['username'],
-                    'role'      => $data['password'],
+                    'role'      => $data['role'],
                     'logged_in' => TRUE
                 ];
                 $this->session->set($userData);

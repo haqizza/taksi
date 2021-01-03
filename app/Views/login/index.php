@@ -42,22 +42,40 @@
             justify-content: start;
             padding: 0;
         }
+        .login-container{
+            margin: auto;
+            width: 30%;
+        }
 	</style>
 </head>
 <body>
 <div id="loginModal">
-    <div class="card text-center">
-      <h5 class="card-header bg-info text-white">
+    <nav class="navbar navbar-expand-md navbar-light bg-primary py-3" id="mainNav">
+        <div class="container">
+            <a class="text-white navbar-brand js-scroll-trigger" href="<?=base_url('/');?>"><i>TAKSI</i></a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li><a class="btn btn-primary" href="<?=base_url('/pengiriman');?>"><i>Kirim Barang</i></a></li>
+                    <li><a class="btn btn-primary" href="<?=base_url('/cek');?>"><i>Cek Resi</i></a></li>
+                    <li><a class="btn btn-primary" href="<?=base_url('#tentang');?>"><i>Tentang</i>
+                    <li><a class="btn btn-primary" href="<?=base_url('#kontak');?>"><i>Kontak</i></a></li>
+                    <li><a class="btn btn-primary" href="<?=base_url('/login');?>"><i>Login</i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+    <div class="login-container card text-center">
+      <h5 class="card-header bg-primary text-white">
         Login
       </h5>
       <div class="card-body">
         <form action="<?=base_url('login/auth');?>" method="POST">
           <input type="text" name="username" class="form-control" placeholder="Username"><br>
           <input type="password" name="password" class="form-control" placeholder="Password"><br>
-          <input type="submit" class="btn btn-info" value="Login"></imput>
+          <input type="submit" class="btn btn-primary" value="Login"></imput>
         </form>
       </div>
-      <div class="card-footer text-muted bg-info">
+      <div class="card-footer text-muted bg-primary">
         
       </div>
     </div>

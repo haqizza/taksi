@@ -66,19 +66,19 @@
 	</style>
 </head>
 <body>
-    <div id="topbar" class="flex-horizon bg-info">
+    <div id="topbar" class="flex-horizon bg-primary">
       <div class="topbar-item text-white"><b>Dashboard Admin</b></div>
     </div>
     <div class="flex-horizon stretch">
-        <div id="sideMenu" class="bg-info">
+        <div id="sideMenu" class="bg-primary">
             <div id="menuList">
                 <a href="<?=base_url('/admin');?>">
-                <div class="menu-item"><i class="fa fa-chart-pie"></i> Pengiriman</div>
+                <div class="menu-item"><i class="fa fa-dolly-flatbed"></i> Pengiriman</div>
                 </a>
                 <a href="<?=base_url('/admin/data_kurir');?>">
-                <div class="menu-item"><i class="fa fa-book"></i> Kurir</div>
+                <div class="menu-item"><i class="fas fa-motorcycle"></i> Kurir</div>
                 </a>
-                <a href="<?=base_url('/admin/pengiriman_saya');?>">
+                <a href="<?=base_url('/admin/data_akun');?>">
                     <div class="menu-item" ><i class="fa fa-user"></i> Akun</div>
                 </a>
                 <a href="<?=base_url('/login');?>">
@@ -93,21 +93,36 @@
                         <h5>Data Kurir</h5>
                     </div>
                     <div class="card-body">
+                        <div class="text-right">
+                            <a href="<?=base_url('/admin/add_akun');?>">
+                                <div class="btn btn-success"><i class="fa fa-plus"></i> Tambah</div>
+                            </a>
+                        </div>
                         <table class="table table-bordered">
-                            <tr class="table-active"></tr>
-                            <th hidden>id</th>
-                            <th width="20%">Username</th>
-                            <th>Password</th>
-                            <th>Role</th>
+                            <tr class="table-active">
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Kurir</th>
+                                <th>Role</th>
+                                <th width="12%">Aksi</th>
+                            </tr>
                         <?php foreach ($dataAkun as $data) : ?>
                             <tr>
                                 <td class="nama"><?=$data['username'];?></td>
                                 <td><?= ucfirst($data['password']);?></td>
-                                <td><?=$data['role'];?></td>
+                                <td><?= $data['id_kurir'] . " - " . $data['nama_kurir']?></td>
+                                <td><?= $data['role'];?></td>
+                                <td>
+                                    <a href="<?=base_url('admin/akun/'.$data['id_user']);?>">
+                                        <button class="btn btn-success"><i class="fa fa-edit"></i></button>
+                                    </a>
+                                    <a href="<?=base_url('admin/akun/delete/'.$data['id_user']);?>">
+                                        <button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
+                                    </a>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                         </table>
-                        <!-- <small><sup>*</sup>Untuk pergantian data bisa menghubungi bagian Administrasi atau bisa langsung datang ke kantor.</small> -->
                     </div>
                 </div>
             </div>

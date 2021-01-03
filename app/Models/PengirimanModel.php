@@ -38,9 +38,22 @@ class PengirimanModel extends Model{
         return $this->where('kurir', $idKurir)->findAll();
     }
     
+    public function getById($idPengiriman)
+    {
+        return $this->where(['id_pengiriman' => $idPengiriman])->first();
+    }
+
     public function getByKode($kode)
     {
         return $this->where(['kode_pengiriman' => $kode])->first();
+    }
+
+    public function updatePengiriman($data)
+    {   
+        $db = \Config\Database::connect();
+        $builder = $db->table('pengiriman');
+        $builder->where('kode_pengiriman', $data['kode_pengiriman']);
+        $builder->update($data);
     }
 
     public function updateKurir($idPengiriman, $idKurir)
