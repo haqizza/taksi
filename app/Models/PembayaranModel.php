@@ -18,6 +18,6 @@ class PembayaranModel extends Model{
 
   public function getById($id)
   {
-    return $this->where(['id' => $id])->first();
+    return $this->where(['id_pembayaran' => $id])->first();
   }
 }

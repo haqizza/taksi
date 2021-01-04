@@ -25,7 +25,7 @@ class Admin extends Controller{
     }
 
     public function index(){
-        $data['pengiriman'] = $this->pengirimanModel->getOpenedPengiriman();
+        $data['pengiriman'] = $this->pengirimanModel->getAll();
         echo view('admin/index', $data);
     }
     

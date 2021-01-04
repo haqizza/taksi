@@ -5,6 +5,7 @@ use CodeIgniter\Controller;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use CodeIgniter\I18n\Time;
 use App\Models\PengirimanModel;
+use App\Models\PembayaranModel;
 
 class Pengiriman extends Controller{
     protected $pengirimanModel;
@@ -13,6 +14,7 @@ class Pengiriman extends Controller{
     public function __construct(){
         $this->session = session();
         $this->pengirimanModel = new PengirimanModel();
+        $this->pembayaranModel = new PembayaranModel();
     }
 
     public function index(){
@@ -66,7 +68,9 @@ class Pengiriman extends Controller{
                 'cara_pembayaran' =>  $this->request->getVar('cara_pembayaran'),
                 'status_pengiriman' =>  'menunggu penjemputan',
             ]);
-            $data['kode'] = $kode;
+            
+            $data['pengiriman'] = $this->pengirimanModel->getByKode($kode);
+            $data['pembayaran'] = $this->pembayaranModel->getById($this->request->getVar('cara_pembayaran'));
 
             return view('pengiriman/resi', $data);
         }
@@ -82,7 +86,9 @@ class Pengiriman extends Controller{
 
     public function resi($kode){
         $data['data'] = $this->pengirimanModel->getByKode($kode);
-
+        if($data['data'] == NULL){
+            return redirect()->to('/cek');
+        }
         return view('resi/index', $data);
     }
 

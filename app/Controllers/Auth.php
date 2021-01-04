@@ -60,6 +60,7 @@ class Auth extends Controller{
 
     public function logout(){
         $this->session->destroy();
+        $this->session->stop();
 
         return redirect()->to('/');
     }

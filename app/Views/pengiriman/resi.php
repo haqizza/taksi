@@ -65,9 +65,15 @@
         </div>
         <div class="card-body text-center">
             <div>
-                <a href="<?=base_url('/resi/'.$kode);?>">
-                    <h2><?=$kode?></h2>
+                <a href="<?=base_url('/resi/'.$pengiriman['kode_pengiriman']);?>">
+                    <h2><?=$pengiriman['kode_pengiriman'];?></h2>
                 </a>
+            </div>
+            <hr>
+            <div>
+                <h4>Pembayaran</h4>
+                <p>Lakukan Pembayaran <h6><?=$pembayaran['nama_pembayaran'];?></h6> Ke</p>
+                <h5><?=$pembayaran['nomor_pembayaran'];?></h5>
             </div>
         </div>
     </div>
