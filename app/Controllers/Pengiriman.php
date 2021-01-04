@@ -79,6 +79,7 @@ class Pengiriman extends Controller{
     public function cek(){
         return view('resi/cek');
     }
+
     public function resi($kode){
         $data['data'] = $this->pengirimanModel->getByKode($kode);
 

@@ -45,8 +45,6 @@ class KurirMigration extends Migration
 		$this->forge->createTable('kurir');
 	}
 
-	//--------------------------------------------------------------------
-
 	public function down()
 	{
 		$this->forge->dropTable('kurir');

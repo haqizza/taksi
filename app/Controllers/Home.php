@@ -2,8 +2,16 @@
 
 use CodeIgniter\I18n\Time;
 use DateTime;
+use App\Models\PengirimanModel;
+use App\Models\Model;
 class Home extends BaseController
 {
+    protected $pengirimanModel;
+
+
+    public function __construct(){
+        $this->pengirimanModel = new PengirimanModel();
+    }
 	public function index()
 	{
 		return view('home/index');

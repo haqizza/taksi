@@ -61,6 +61,7 @@ class PengirimanModel extends Model{
         $db = \Config\Database::connect();
         $builder = $db->table('pengiriman');
         $data = [
+            'status_pengiriman' => 'sedang dijemput',
             'kurir' => $idKurir,
         ];
         $builder->where('id_pengiriman', $idPengiriman);

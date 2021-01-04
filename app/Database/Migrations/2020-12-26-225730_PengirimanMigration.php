@@ -81,10 +81,10 @@ class PengirimanMigration extends Migration
 		$this->forge->createTable('pengiriman');
 	}
 
-	//--------------------------------------------------------------------
 
 	public function down()
 	{
 		$this->forge->dropTable('pengiriman');
 	}
 }
+
