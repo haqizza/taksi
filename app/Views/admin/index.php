@@ -106,6 +106,8 @@
                                 <td>
                                     Kode : <b><?= $data["kode_pengiriman"];?></b>
                                     <br>
+                                    Status Pengiriman: <b><?= ucwords($data["status_pengiriman"]);?></b>
+                                    <br>
                                     <div class="btn btn-secondary" onclick="openFoto(this);">Foto</div>
                                     <img class='foto' src="<?= base_url("/image/".$data["foto"]);?>" alt="Foto Barang" width="100%" hidden>
                                 </td>
